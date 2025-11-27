@@ -2,12 +2,26 @@
 // Database Connection and Helper Functions
 
 // Database Configuration
-define('DB_TYPE', 'mysql'); // 'sqlite', 'mysql', or 'sqlserver'
+// Auto-detect environment: production (Plesk) vs local (XAMPP)
+$isProduction = !empty($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== 'localhost' && strpos($_SERVER['HTTP_HOST'], '127.0.0.1') === false;
+
+if ($isProduction) {
+    // Production settings (Plesk)
+    define('DB_TYPE', 'mysql');
+    define('DB_HOST', 'localhost'); // Usually 'localhost' on Plesk
+    define('DB_NAME', 'soncisdb');
+    define('DB_USER', 'poultry2_soncisdb');
+    define('DB_PASS', 'F2ssItjV8w#1*qgo');
+} else {
+    // Local development settings (XAMPP)
+    define('DB_TYPE', 'mysql');
+    define('DB_HOST', '127.0.0.1');
+    define('DB_NAME', 'soncisdb');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+}
+
 define('DB_PATH', __DIR__ . '/../database/soncis.db'); // SQLite path (unused for MySQL)
-define('DB_HOST', '127.0.0.1'); // MySQL host
-define('DB_NAME', 'soncisdb'); // MySQL database name
-define('DB_USER', 'root'); // MySQL username (default XAMPP)
-define('DB_PASS', ''); // MySQL password (blank by default)
 
 class Database {
     private static $connection = null;

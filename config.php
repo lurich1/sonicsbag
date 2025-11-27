@@ -3,7 +3,10 @@
 
 // Site Configuration
 define('SITE_NAME', 'SONCIS');
-define('SITE_URL', 'http://localhost');
+// Auto-detect site URL based on environment
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+define('SITE_URL', $protocol . '://' . $host);
 define('SITE_DESCRIPTION', 'If it needs a bag, it needs SONCIS. Crafted with Purpose. Built to Last.');
 
 // Paystack Configuration

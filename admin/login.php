@@ -15,15 +15,15 @@ $success = '';
 
 try {
     $db = getDB();
-    // Always ensure table exists
+    // Always ensure table exists (MySQL syntax)
     $db->exec("CREATE TABLE IF NOT EXISTS AdminUsers (
-        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-        Username TEXT UNIQUE NOT NULL,
-        PasswordHash TEXT NOT NULL,
-        Email TEXT,
+        Id INT AUTO_INCREMENT PRIMARY KEY,
+        Username VARCHAR(100) UNIQUE NOT NULL,
+        PasswordHash VARCHAR(255) NOT NULL,
+        Email VARCHAR(255),
         CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
-        LastLoginAt DATETIME
-    )");
+        LastLoginAt DATETIME NULL
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
 
     // Ensure at least one admin user exists
     $adminCount = (int) $db->query("SELECT COUNT(*) FROM AdminUsers")->fetchColumn();
@@ -34,7 +34,7 @@ try {
         $success = 'Default admin account created! Username: admin, Password: admin123';
     }
 } catch (PDOException $e) {
-    $error = 'Unable to connect to database. Please check configuration.';
+    $error = 'Unable to connect to database. Please check your configuration. Error: ' . htmlspecialchars($e->getMessage());
     error_log("Admin init error: " . $e->getMessage());
 }
 
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
                 $_SESSION['admin_username'] = $username;
                 $_SESSION['admin_id'] = $admin['Id'];
                 
-                $updateStmt = $db->prepare("UPDATE AdminUsers SET LastLoginAt = datetime('now') WHERE Id = ?");
+                $updateStmt = $db->prepare("UPDATE AdminUsers SET LastLoginAt = NOW() WHERE Id = ?");
                 $updateStmt->execute([$admin['Id']]);
                 
                 header('Location: ' . url('admin/dashboard.php'));
