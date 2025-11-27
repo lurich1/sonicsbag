@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-label="Tech Retainer LLC logo">
+  <!-- Transparent background (no rect) -->
+
+  <!-- Left symbol: two overlapping circles -->
+  <!-- Circle style -->
+  <defs>
+    <style type="text/css"><![CDATA[
+      .circle-fill { fill: #7f8488; } /* neutral medium gray */
+      .letter { fill: #ffffff; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; font-weight: 700; }
+      .wordmark { fill: #111111; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; font-weight: 700; }
+      .llc { fill: #111111; font-family: "Inter", "Helvetica Neue", Arial, sans-serif; font-weight: 600; letter-spacing: 2px; }
+    ]]></style>
+  </defs>
+
+  <!-- Circles (positioned left) -->
+  <!-- First circle center (x=160, y=360), second circle center (x=320, y=360) -->
+  <g id="symbol" transform="translate(40,120)">
+    <circle class="circle-fill" cx="160" cy="160" r="160"/>
+    <circle class="circle-fill" cx="320" cy="160" r="160"/>
+    <!-- White letters inside circles -->
+    <text class="letter" x="160" y="195" font-size="160" text-anchor="middle" dominant-baseline="middle">T</text>
+    <text class="letter" x="320" y="195" font-size="160" text-anchor="middle" dominant-baseline="middle">R</text>
+  </g>
+
+  <!-- Wordmark to the right of circles -->
+  <!-- "Tech" above "Retainer", "LLC" below -->
+  <g id="wordmark" transform="translate(460,150)">
+    <!-- "Tech" -->
+    <text class="wordmark" x="0" y="170" font-size="220" text-anchor="start" dominant-baseline="alphabetic">Tech</text>
+
+    <!-- "Retainer" (placed below Tech) -->
+    <text class="wordmark" x="0" y="420" font-size="220" text-anchor="start" dominant-baseline="alphabetic">Retainer</text>
+
+    <!-- "LLC" smaller -->
+    <text class="llc" x="0" y="560" font-size="72" text-anchor="start" dominant-baseline="alphabetic">LLC</text>
+  </g>
+</svg>

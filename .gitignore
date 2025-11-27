@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+database/*.db
+database/*.sqlite
+
+# Environment files
+.env
+.env.local
+config.local.php
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Uploads (optional - uncomment if you don't want to track uploads)
+# assets/images/uploads/*
+# !assets/images/uploads/.gitkeep
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Plesk specific
+.pleskignore
+
