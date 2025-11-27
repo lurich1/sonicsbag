@@ -41,7 +41,7 @@ CREATE TABLE `adminusers` (
 --
 
 INSERT INTO `adminusers` (`Id`, `Username`, `PasswordHash`, `Email`, `CreatedAt`, `LastLoginAt`) VALUES
-(1, 'admin', '$2a$11$KIXx8qXqZqZqZqZqZqZqZ.qZqZqZqZqZqZqZqZqZqZqZqZqZqZqZ', 'admin@soncis.com', '2025-11-23 06:54:24', NULL);
+(1, 'admin', '$2y$10$U4KWXvhOrjvpe7JO.kG2x.D.U6.zN6kz7eO7Arg3wuNSbfqf1bcFa', 'admin@soncis.com', '2025-11-23 06:54:24', NULL);
 
 -- --------------------------------------------------------
 
